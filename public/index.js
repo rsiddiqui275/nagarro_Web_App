@@ -64,7 +64,7 @@ login = () => {
         })
     }
     else {
-        alert("Please enter user name")
+        alert("Please enter username")
     }
 }
 logout = () => {
