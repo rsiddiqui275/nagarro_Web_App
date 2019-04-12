@@ -15,7 +15,7 @@ usersRoute.post('/', async (req, res) => {
         }
     })
 
-    if (result != null) {
+    if (!result) {
         try {
             var added = await Users.create({
                 name: req.body.name
