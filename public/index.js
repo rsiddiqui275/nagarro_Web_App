@@ -21,10 +21,10 @@ function updateHead() {
 
 
 
-function refreshProductList() {
+async function refreshProductList() {
     $('#productTable').empty();
-    $.get('/products', (data) => {
-        // console.log(data);
+    await $.get('/products', (data) => {
+        console.log(data);
         var htmlToAdd = '';
         var serialNo = 1;
         for (product of data.data) {
@@ -54,13 +54,18 @@ function refreshProductList() {
     })
 }
 login = () => {
-    $.post('/users', {
-        name: $('#userInput').val()
-    }, (data) => {
-        sessionStorage.setItem('name', $('#userInput').val())
-        sessionStorage.setItem('id', data.userId)
-        updateHead();
-    })
+    if ($('#userInput').val() != '') {
+        $.post('/users', {
+            name: $('#userInput').val()
+        }, (data) => {
+            sessionStorage.setItem('name', $('#userInput').val())
+            sessionStorage.setItem('id', data.userId)
+            updateHead();
+        })
+    }
+    else {
+        alert("Please enter user name")
+    }
 }
 logout = () => {
     sessionStorage.removeItem('name')
