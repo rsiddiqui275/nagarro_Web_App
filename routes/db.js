@@ -2,7 +2,7 @@ const seq = require('sequelize');
 
 const db = new seq({
     dialect: 'sqlite',
-    storage:__dirname+'/../shoppingkrt.sqlite'
+    storage:__dirname+'/../database.sqlite'
 })
 
 const Users = db.define('user',{
